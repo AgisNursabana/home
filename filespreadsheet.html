@@ -8,7 +8,7 @@
 
     function drawTable() {
       var query = new google.visualization.Query(
-        'https://docs.google.com/spreadsheets/d/1bkimNeF8_8A58PQ3urw5v40JkvuXa5NMr5oZ9aQOELs/gviz/tq?tq=SELECT%20*'
+        'https://docs.google.com/spreadsheets/d/1_2fne2lb4Zme0whLfBSuE2rZKK0Fn947mMlHjwtJJ_Y/gviz/tq?tq=SELECT%20*'
       );
       query.send(handleQueryResponse);
     }
@@ -19,7 +19,7 @@
       table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
     }
 
-    setInterval(drawTable, 3000); // Refresh setiap 60 detik
+    setInterval(drawTable, 60000); // Refresh setiap 60 detik
 
 function handleQueryResponse(response) {
   if (response.isError()) {
