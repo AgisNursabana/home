@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['table']});
+    google.charts.setOnLoadCallback(drawTable);
+
+    function drawTable() {
+      var query = new google.visualization.Query(
+        'https://docs.google.com/spreadsheets/d/14P_BaUPW4pGK9hMe0V4R2gxJhHoIlm5BLSwhSRLg1V0/gviz/tq?tq=SELECT%20*'
+      );
+      query.send(handleQueryResponse);
+    }
+
+    function handleQueryResponse(response) {
+      var data = response.getDataTable();
+      var table = new google.visualization.Table(document.getElementById('google-sheet-table'));
+      table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+    }
+
+    setInterval(drawTable, 60 * 1000); // Refresh setiap 60 detik
+  </script>
+</head>
+<body>
+  <div id="google-sheet-table"></div>
+</body>
+</html>
