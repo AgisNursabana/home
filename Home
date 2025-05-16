@@ -8,7 +8,7 @@
 
 h1 {
 font-size: 30px;
-text-align: center;
+text-align: center; 
 margin-top: 5px;
 background: linear-gradient(to right, black 0%, gold 50%, black 100%);
 background-size: 200%;
