@@ -41,14 +41,8 @@ font-size:15px;
 	<div class="sidebar-left">
 	   <a href="">HOME</home>
 	    <div class="fee">
-	      <a href="">ETY KURNIAWAN</a>
+	      <a href="http://agisnursabana.github.io/agis/filespreadsheet.html">ETY KURNIAWAN</a>
 	<br>
 	      <a href="">SISWATI</a>
 	    </div>
-	</div>
-
-	
-	
-</body>
-	</html>
       
