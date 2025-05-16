@@ -1,4 +1,3 @@
-
 <html>
 <head>
 	<meta charset="utf-8" />
@@ -39,7 +38,7 @@ font-size:15px;
 	
 <body>
 	<div class="sidebar-left">
-	   <a href="">HOME</home>
+	   <a href="">HOME</a>
 	    <div class="fee">
 	      <a href="http://agisnursabana.github.io/agis/filespreadsheet.html">ETY KURNIAWAN</a>
 	<br>
