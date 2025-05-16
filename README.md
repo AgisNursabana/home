@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<style>
 
-h1 {
+h1 { 
 font-size: 30px;
 text-align: center;
 margin-top: 5px;
