@@ -1,0 +1,483 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>SAUNG SYARI OFFICIAL</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<style>
+	
+header {
+background-color: #CB905C);
+width:370px;
+height:38px ;
+padding:0 0 0 0;
+margin-top: 0;
+padding-top: 0;
+border-radius: 10px 0 10px 0;
+}
+
+
+header h1 {
+font-size: 25px;
+text-align: center;
+margin-top: 0;
+margin-left: 0;
+font-weight: bold;
+background: linear-gradient(to left, #381E05 0%,#FDF2D7 30%, #CB905C 80%,   #381E05 100%);
+background-size: 200%;
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+animation: animate-gradient 15s linear infinite;
+background-color:black;
+border:0.2px solid brown;
+border-radius: 10px 10px 10px 10px;
+box-shadow: 0px 5px 0px gray;
+font-family: arial;
+padding: 10px 60px 10px 60px;
+z-index: -1;
+margin: 3px;
+text-shadow: 0px 0px 8px white;
+z-index: -1;
+position: fixed;
+}
+
+
+.sidebar-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 330px;
+  height: 100vh;
+  background: linear-gradient(to right, #CB905C 0%, white 150%);
+  padding: 20px;
+  padding-top: 90px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-top: 70px;
+  transition: transform 00.5s;
+}
+
+.sidebar-left.hide {
+transform: translateX(-250px);
+}
+
+.sidebar-left ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-left li {
+  margin-bottom: 20px;
+}
+
+.sidebar-left a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  margin-top: 50px;
+  text-align: center;
+  font-family: arial;
+  
+}
+
+.home a {
+  color: black;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  text-align: center;
+  font-family: 'arial';
+  border: 0.5px solid gold;
+  padding: 10px 135px 10px 135px;
+  margin-left: 4px;
+  border-radius: 90px;
+  font-size: 20px;
+  background-color: #45D4AD;
+  top: 300px;
+  font-weight: bolder;
+  box-shadow: 0px 5px 0px gray;
+  transition: all 0.2s ease-in-out;
+  text-shadow: 0px 2px 2px gray;
+  
+}
+
+
+.home:hover a {
+  color: white;
+  background-color: #45D4AD;
+  border-radius: 5px;
+  font-family: 'arial';
+  border: 0.5px solid gold;
+  padding: 10px 135px 10px 135px;
+  margin-left: 4px;
+  border-radius: 90px;
+  font-size: 20px;
+  box-shadow: 0px 5px 0px gray;
+  transform: translateY(-2px);
+}
+
+
+home:active {
+box-shadow: 0px 5px 0px gray;
+transform: translateY(-2px);
+}
+
+
+ 
+.home a:hover {
+color: black;
+opacity: 0.9;
+}
+
+.dropdown-button:active {
+box-shadow: 0px 2px 0px blue;
+transform: translateY(-5px);
+}
+
+.dropdown-button {
+  border:0.5px solid white;
+  padding:20px 107px 20px 107px;
+  text-align: center;
+  border-radius: 90px;
+  font-family: 'arial';
+  background-color: #45D4AD;
+  box-shadow: 0px 5px 0px gray;
+  transition: all 0.5s ease-in-out;
+  font-size: 20px;
+}
+
+.dropdown-button a:hover {
+color:black;
+
+}
+
+.dropdown-button a {
+color: black;
+font-size: 22px;
+font-weight: bolder;
+transition: all 0.2a ease-in-out;
+text-shadow: 0px 2px 2px gray;
+font-family: 'arial';
+  
+}
+
+
+
+
+
+.sidebar-left .active {
+  color: #fff;
+  background-color: #444;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.content {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+
+@keyframes animate-gradient {
+  to {background-position: 0%;}
+  to {backgroun-position: 100%;}
+  to {background-position: 200%;}
+}
+
+
+
+body {
+background-color:#FDF3D8;
+background-attachment: fixed;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 1px;
+  border-radius: 10px;
+}
+
+
+.dropdown-button:hover {
+  background-color: #ADADAD;
+  box-shadow: 0px 5px 0px gray;
+  transform: translateY(-2px);
+}
+
+
+
+
+.dropdown-content {
+  display: block;
+  position: absolute;
+  background-color: none;
+  min-width: 300px;
+  max-height: 315px;
+  top: 100%;
+  left: 15px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-top: 10px;
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: scroll;
+  border-radius: 5px;
+}
+
+.dropdown-content a {
+  color: white;
+  padding:5px 80px 5px 80px;
+  text-decoration: none;
+  display: block;
+  border: 0.5px solid white;
+  margin: 10px;
+  border-radius: 20px;
+  font-family: sans-serif;
+  background-color: none;
+
+}
+
+.dropdown-content a:hover {
+  color: gray;
+  background-color: white; 
+}
+
+
+
+.dropdown:hover .dropdown-button {
+  background-color: #45D4AD;
+}
+
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  animation: slide-down 1s ease-in-out;
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+	
+	</style>
+	<header>
+	<h1>S A U N G &nbsp; S Y A R I</h1>
+	</header>
+	
+<head>
+	
+<body>
+	<div class="sidebar-left">                                   
+     <div class="home"><a href="#">HOME</a>
+     </div>
+     
+<br>
+<br>
+                  
+   <div class="dropdown">
+  <div class="dropdown-button"><a href="">FEE RESELLER</a></div>
+  <div class="dropdown-content">
+             
+    <div id="Ety"><a href="#">ETY</a></div>
+    <div id="Siswati"><a href="#">SISWATI</a></div>
+    <div id="Muji"><a href="#">MUJIYATI</a></div>
+    <div id="Muthoharoh"><a href="#">MUTHOHAROH</a></div>
+    <div id="Ainun"><a href="#">AINUN ALFI</a></div>
+    <div id="Umi"><a href="#">UMI FADILAH</a></div>
+    <div id="Iis"><a href="#">IIS SITI NUR A</a></div>
+    <div id="Waqiah"><a href="#">WAQIAH</a></div>
+    <div id="Aneu"><a href="#">ANEU</a></div>
+    <div id="Latifah"><a href="#">LATIFAH</a></div>
+    
+    
+  </div>
+</div>
+<script>
+
+
+
+
+
+const dropdownButton = document.querySelector('.dropdown-button');
+const dropdownContent = document.querySelector('.dropdown-content');
+
+dropdownButton.addEventListener('click', () => {
+  dropdownContent.classList.toggle('show');
+});
+
+window.addEventListener('click', (e) => {
+  if (!e.target.matches('.dropdown-button')) {
+    dropdownContent.classList.remove('show');
+  }
+});
+
+
+
+  const etyButton = document.getElementById('Ety');
+
+  etyButton.addEventListener('click', () => {
+    const password = prompt('Masukkan password:');
+    const correctPassword = '123'; 
+
+    if (password === correctPassword) {
+      window.location.href = 'http://localhost:9898/Local/Agis/SAUNG-SYARI/Ety.html?EFB8FAE6-A118-4FC7-876B-CBE8E73D3A80'; 
+    } else {
+      alert('Password salah!');
+    }
+  });
+
+
+const siswatiButton = document.getElementById('Siswati');
+
+  siswatiButton.addEventListener('click', () => {
+    const password = prompt('Masukkan password:');
+    const correctPassword = '132'; 
+
+    if (password === correctPassword) {
+      window.location.href = ''; 
+    } else {
+      alert('Password salah!');
+    }
+  });
+
+
+const mujiButton = document.getElementById('Muji');
+
+  mujiButton.addEventListener('click', () => {
+    const password = prompt('Masukkan password:');
+    const correctPassword = '231'; 
+
+    if (password === correctPassword) {
+      window.location.href = ''; 
+    } else {
+      alert('Password salah!');
+    }
+  });
+
+
+const muthoButton = document.getElementById('Muthoharoh');
+
+  muthoButton.addEventListener('click', () => {
+    const password = prompt('Masukkan password:');
+    const correctPassword = '456'; 
+
+    if (password === correctPassword) {
+      window.location.href = ''; 
+    } else {
+      alert('Password salah!');
+    }
+  });
+
+
+const ainunButton = document.getElementById('Ainun');
+
+  ainunButton.addEventListener('click', () => {
+    const password = prompt('Masukkan password:');
+    const correctPassword = '564'; 
+
+    if (password === correctPassword) {
+      window.location.href = ''; 
+    } else {
+      alert('Password salah!');
+    }
+  });
+
+
+const umiButton = document.getElementById('Umi');
+
+  umiButton.addEventListener('click', () => {
+    const password = prompt('Masukkan password:');
+    const correctPassword = '645'; 
+
+    if (password === correctPassword) {
+      window.location.href = ''; 
+    } else {
+      alert('Password salah!');
+    }
+  });
+
+
+const iisButton = document.getElementById('Iis');
+
+  iisButton.addEventListener('click', () => {
+    const password = prompt('Masukkan password:');
+    const correctPassword = '465'; 
+
+    if (password === correctPassword) {
+      window.location.href = ''; 
+    } else {
+      alert('Password salah!');
+    }
+  });
+
+
+const waqiahButton = document.getElementById('Waqiah');
+
+  waqiahButton.addEventListener('click', () => {
+    const password = prompt('Masukkan password:');
+    const correctPassword = '789'; 
+
+    if (password === correctPassword) {
+      window.location.href = ''; 
+    } else {
+      alert('Password salah!');
+    }
+  });
+
+
+const aneuButton = document.getElementById('Aneu');
+
+  aneuButton.addEventListener('click', () => {
+    const password = prompt('Masukkan password:');
+    const correctPassword = '798'; 
+
+    if (password === correctPassword) {
+      window.location.href = ''; 
+    } else {
+      alert('Password salah!');
+    }
+  });
+
+
+const latifahButton = document.getElementById('Latifah');
+
+  latifahButton.addEventListener('click', () => {
+    const password = prompt('Masukkan password:');
+    const correctPassword = '879'; 
+
+    if (password === correctPassword) {
+      window.location.href = ''; 
+    } else {
+      alert('Password salah!');
+    }
+  });
+
+
+</script>
+
+
+
+	
+	
+</body>
+	</html>
+	
+	
+	
+
+
+      
