@@ -1,0 +1,649 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>SAUNG SYARI OFFICIAL</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<style>
+	
+header {
+background-color: #CB905C);
+width:370px;
+height:38px ;
+padding:0 0 0 0;
+margin-top: 0;
+padding-top: 0;
+border-radius: 10px 0 10px 0;
+}
+
+header h1 {
+font-size: 25px;
+text-align: center;
+margin-top: 0;
+margin-left: 0;
+font-weight: bold;
+background: linear-gradient(to left, #381E05 0%,#FDF2D7 30%, #CB905C 80%,   #381E05 100%);
+background-size: 200%;
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+animation: animate-gradient 15s linear infinite;
+background-color:black;
+border:0.2px solid brown;
+border-radius: 10px 10px 10px 10px;
+box-shadow:green;
+font-family: arial;
+padding: 10px 60px 10px 60px;
+z-index: -1;
+margin: 3px;
+text-shadow: 0px 0px 8px white;
+z-index: -1;
+}
+
+
+
+
+
+@keyframes animate-gradient {
+  to {background-position: 0%;}
+  to {backgroun-position: 100%;}
+  to {background-position: 200%;}
+}
+
+
+
+body {
+background-color:#FDF3D8;
+background-attachment: fixed;
+padding-bottom: 15px;
+}
+
+
+p {
+font-size:20px;
+font-family: sans-serif;
+ background: linear-gradient(to right, #CB905C 0%, white 150%);
+padding: 2px 1px 3px 7px;
+color: white;
+border-radius: 5px;
+margin: 5px; 
+margin: 5px 2px 5px 2px;
+top: 20px;
+}
+
+h1 {
+background: linear-gradient(to right, #CB905C 0%, white 150%);
+padding:3px;
+font-size:20px;
+font-family: 'arial';
+padding-left: 15px;
+border-radius: 5px;
+color: black;
+fontWeight: bolder;
+box-shadow: 0px 5px 0px gray;
+
+}
+
+
+
+.sidebar-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom:0;
+  width: 330px;
+  height: 500px;
+  background: linear-gradient(to right, #CB905C 0%, white 150%);
+  padding: 2px;
+  padding-top: 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-top: 6px;
+  transition: transform 00.5s;
+  margin-bottom: 5px;
+}
+
+
+.home a {
+  color: black;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  text-align: center;
+  font-family: 'arial';
+  border: 0.5px solid black;
+  padding: 10px 145px 10px 145px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  font-size: 25px;
+  background-color: #45D4AD;
+  top: 300px;
+  font-weight: bolder;
+  box-shadow: 0px 5px 0px gray;
+  transition: all 0.2a ease-in-out;
+  
+}
+
+
+.home:hover a {
+  color: white;
+  background-color: #45D4AD;
+  border-radius: 5px;
+  font-family: arial;
+  border: 0.5px solid gold;
+  padding: 10px 145px 10px 145px;
+  margin-left: 5px;
+  border-radius: 10px;
+  font-size: 25px;
+  box-shadow: 0px 5px 0px gray;
+  transform: translateY(-2px);
+}
+
+
+home:active {
+box-shadow: 0px 2px 0px blue;
+transform: translateY(3px);
+}
+
+
+ 
+.home a:hover {
+color: black;
+opacity: 0.9;
+}
+
+#nilai-N5 {
+margin: 5px;
+
+}
+
+#google-sheet-table {
+margin: 5px;
+margin-top: 10px;
+border: 0.5px solid black;
+border-radius: 2px;
+}
+
+#Jan {
+display: none;
+}
+
+#Feb {
+display: none;
+}
+
+#Mar {
+display: none;
+}
+
+#Apr {
+display: none;
+}
+
+#Mei {
+display: none;
+}
+
+#Jun {
+display: none;
+}
+
+#Jul {
+display: none;
+}
+
+#Agt {
+display: none;
+}
+
+#Sep {
+display: none;
+}
+
+#Okt {
+display: none;
+}
+
+#Nov {
+display: none;
+}
+
+#Des {
+display: none;
+}
+
+#chart_div {
+margin-top: 10px;
+border: 1px solid black;
+margin: 10px 2px 5px 2px;
+border-radius: 2px;
+height: 600px;
+}
+
+
+
+#google-sheet-table {
+margin: 10px 2px 5px 2px;
+}
+
+#chart_div svg g text[text-anchor="start"] {
+  text-anchor: middle;
+  transform: translateX(50%);
+}
+
+
+
+#chart_div svg g text[text-anchor="start"] {
+  text-anchor: middle;
+  transform: translateX(50%);
+}
+
+h7 {
+color: red;
+}
+
+
+
+
+
+
+
+
+
+	
+	</style>
+	
+
+
+	
+	
+	<header>
+	<h1>S A U N G &nbsp; S Y A R I</h1>
+	</header>
+	<br>
+	
+<head>
+	
+<body>
+
+  <p><h1>FEE UMI FADILAH</h1>
+  <div id="google-sheet-table"></div>
+<h7>*Subtotal(Fee) akan muncul ketika pembayaran sudah lunas.<h7>
+  
+<div class="grafikfee">
+  <div id="Jan"></div>
+  <div id="Feb"></div>
+  <div id="Mar"></div>
+  <div id="Apr"></div>
+  <div id="Mei"></div>
+  <div id="Jun"></div>
+  <div id="Jul"></div>
+  <div id="Agt"></div>
+  <div id="Sep"></div>
+  <div id="Okt"></div>
+  <div id="Nov"></div>
+  <div id="Des"></div>
+</div>
+   <div id="chart_div"></div>
+  <div id="nilai-N5"></div>
+  <div id="nilai-N3"></div>
+  <br>
+    <div class="home"><a href="https://agisnursabana.github.io/home/Home.html">HOME</a>
+     </div>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>                                             
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['table', 'corechart']});
+    google.charts.setOnLoadCallback(drawTable);
+
+    function drawTable() {
+      var query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/16q7A14RtbYRZxxqNWimbR4dIvEk7lPhTcDRQnIGMTwI/gviz/tq?tq=SELECT%20*');                                                                                                      
+      query.send(handleQueryResponse);
+    }
+
+
+
+    function handleQueryResponse(response) {
+      if (response.isError()) {
+        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+        return;
+      }
+      var data = response.getDataTable();
+      var table = new google.visualization.Table(document.getElementById('google-sheet-table'));
+      table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+
+
+
+
+
+
+
+  
+
+      if (data.getNumberOfRows() > 1 && data.getNumberOfColumns() > 1) {
+        var valueN3 = data.getValue(3, 13);
+        if (valueN3 !== null && valueN3 !== undefined) {
+          var rupiah = valueN3.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+          document.getElementById('nilai-N3').innerHTML = `<em><p><b style="font-size:20px; font-family: sans-serif; padding: 5px;">Total Fee : </b><b style="font-size: 30px;color:green;font-family: sans-serif; margin-bottom: 3px;">${rupiah}</b></p></em>`;
+        } else {
+          document.getElementById('nilai-N3').innerHTML = 'Data tidak ada';
+        }
+
+var valueN5 = data.getValue(0, 13);
+        if (valueN5 !== null && valueN5 !== undefined) {
+          var rupiah = valueN5.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+          document.getElementById('nilai-N5').innerHTML = `<b style="font-size:15px; font-family: sans-serif;">Total Pembelanjaan : </b><b style="font-size: 15px;color:coral;font-family: sans-serif;">${rupiah}</b>`;
+        } else {
+          document.getElementById('nilai-N5').innerHTML = 'Data tidak ada';
+        }
+
+     
+var valuea = data.getValue(3, 1);
+        if (valuea !== null && valuea !== undefined) {
+          var rupiah = valuea.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 1
+  }).replace('$', '');
+
+  document.getElementById('Jan').innerHTML = `Rp${rupiah}`;
+} else {
+  document.getElementById('Jan').innerHTML = 'Data tidak ada';
+
+}
+
+
+
+var valueb = data.getValue(3, 2);
+        if (valueb !== null && valueb !== undefined) {
+          var rupiah = valueb.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 1
+  }).replace('$', '');
+
+  document.getElementById('Feb').innerHTML = `Rp${rupiah}`;
+} else {
+  document.getElementById('Feb').innerHTML = 'Data tidak ada';
+
+}
+
+
+
+var valuec = data.getValue(3, 3);
+        if (valuec !== null && valuec !== undefined) {
+          var rupiah = valuec.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 1
+  }).replace('$', '');
+
+  document.getElementById('Mar').innerHTML = `Rp${rupiah}`;
+} else {
+  document.getElementById('Mar').innerHTML = 'Data tidak ada';
+
+}
+
+
+
+var valued = data.getValue(3, 4);
+        if (valued !== null && valued !== undefined) {
+          var rupiah = valued.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 1
+  }).replace('$', '');
+
+  document.getElementById('Apr').innerHTML = `Rp${rupiah}`;
+} else {
+  document.getElementById('Apr').innerHTML = 'Data tidak ada';
+
+}
+
+
+
+var valuee = data.getValue(3, 5);
+        if (valuee !== null && valuee !== undefined) {
+          var rupiah = valuee.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 1
+  }).replace('$', '');
+
+  document.getElementById('Mei').innerHTML = `Rp${rupiah}`;
+} else {
+  document.getElementById('Mei').innerHTML = 'Data tidak ada';
+
+}
+
+
+
+var valuef = data.getValue(3, 6);
+        if (valuef !== null && valuef !== undefined) {
+          var rupiah = valuef.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 1
+  }).replace('$', '');
+
+  document.getElementById('Jun').innerHTML = `Rp${rupiah}`;
+} else {
+  document.getElementById('Jun').innerHTML = 'Data tidak ada';
+
+}
+
+
+
+var valueg = data.getValue(3, 7);
+        if (valueg !== null && valueg !== undefined) {
+          var rupiah = valueg.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 1
+  }).replace('$', '');
+
+  document.getElementById('Jul').innerHTML = `Rp${rupiah}`;
+} else {
+  document.getElementById('Jul').innerHTML = 'Data tidak ada';
+
+}
+
+
+
+var valueh = data.getValue(3, 8);
+        if (valueh !== null && valueh !== undefined) {
+          var rupiah = valueh.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 1
+  }).replace('$', '');
+
+  document.getElementById('Agt').innerHTML = `Rp${rupiah}`;
+} else {
+  document.getElementById('Agt').innerHTML = 'Data tidak ada';
+
+}
+
+
+
+var valuei = data.getValue(3, 9);
+        if (valuei !== null && valuei !== undefined) {
+          var rupiah = valuei.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 1
+  }).replace('$', '');
+
+  document.getElementById('Sep').innerHTML = `Rp${rupiah}`;
+} else {
+  document.getElementById('Sep').innerHTML = 'Data tidak ada';
+
+}
+
+
+
+var valuej = data.getValue(3, 10);
+        if (valuej !== null && valuej !== undefined) {
+          var rupiah = valuej.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 1
+  }).replace('$', '');
+
+  document.getElementById('Okt').innerHTML = `Rp${rupiah}`;
+} else {
+  document.getElementById('Okt').innerHTML = 'Data tidak ada';
+
+}
+
+
+
+var valuek = data.getValue(3, 11);
+        if (valuek !== null && valuek !== undefined) {
+          var rupiah = valuek.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 1
+  }).replace('$', '');
+
+  document.getElementById('Nov').innerHTML = `Rp${rupiah}`;
+} else {
+  document.getElementById('Nov').innerHTML = 'Data tidak ada';
+
+}
+
+
+
+
+var valuel = data.getValue(3, 12);
+
+if (valuel !== null && valuel !== undefined) {
+  var rupiah = valuel.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 1
+  }).replace('$', '');
+
+  document.getElementById('Des').innerHTML = `Rp${rupiah}`;
+} else {
+  document.getElementById('Des').innerHTML = 'Data tidak ada';
+
+}
+
+        
+
+// Mendapatkan nilai dari setiap div
+// Mendapatkan nilai dari setiap div
+const divs = document.querySelectorAll('.grafikfee div');
+const nilai = [];
+
+
+divs.forEach((div) => {
+  const value = div.innerHTML.replace(/[^0-9.-]+/g, ''); 
+  if (value !== '' && !isNaN(parseFloat(value))) {
+    nilai.push(parseFloat(value.replace(/\./g, ''))); 
+  } else {
+    nilai.push(0); 
+  }
+});
+
+
+var dataGrafik = google.visualization.arrayToDataTable([
+  ['Bulan', 'Fee (Rp)'],
+  ['Jan', nilai[0]],
+  ['Feb', nilai[1]],
+  ['Mar', nilai[2]],
+  ['Apr', nilai[3]],
+  ['Mei', nilai[4]],
+  ['Jun', nilai[5]],
+  ['Jul', nilai[6]],
+  ['Agt', nilai[7]],
+  ['Sep', nilai[8]],
+  ['Okt', nilai[9]],
+  ['Nov', nilai[10]],
+  ['Des', nilai[11]]
+]);
+
+// Membuat opsi untuk grafik
+var options = {
+  title: 'Grafik Fee Umi Fadilah',
+  titleTextStyle: {
+    color: 'red',
+    fontSize: 18,
+    fontName: 'Arial',
+    textAlign: 'center',
+    fontWeight: 'bold'
+  },
+  legend: {position: 'top'},
+  chartArea: {
+     width: '75%',
+     left: 70,
+     height: '80%'
+},
+  hAxis: {
+    title: 'Bulan',
+    textStyle: {fontSize: 10, fontWeight: 'bold'},
+    slantedText: true,
+    slantedTextAngle: 45
+  },
+  vAxis: {
+    title: 'Fee (Rp)',
+    textStyle: {fontSize: 8, color: 'green', fontWeight: 'bold'},
+    minValue: 0,
+    maxValue: 2000000,
+    viewWindow: { min: 0, max: 2000000 },
+    ticks: [
+      {v: 0, f: 'Rp 0'},
+      {v: 200000, f: 'Rp 200.000'},
+      {v: 400000, f: 'Rp 400.000'},
+      {v: 600000, f: 'Rp 600.000'},
+      {v: 800000, f: 'Rp 800.000'},
+      {v: 1000000, f: 'Rp 1000.000'},
+      {v: 1200000, f: 'Rp 1200.000'},
+      {v: 1400000, f: 'Rp 1400.000'},
+      {v: 1600000, f: 'Rp 1600.000'},
+      {v: 1800000, f: 'Rp 1800.000'},
+      {v: 2000000, f: 'Rp 2000.000'}
+      ],
+    gridlines: { count: 10 }
+  },
+  colors: ['#3BA8F3'],
+  tooltip: {isHtml: true}
+};
+
+var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+chart.draw(dataGrafik, options);
+
+
+
+
+    }
+}
+  
+
+
+
+
+
+
+
+
+    setInterval(drawTable, 30000);
+  </script>
+	
+</body>
+	</html>
+	
