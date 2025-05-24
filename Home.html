@@ -10,51 +10,26 @@ header {
 background-color: #CB905C);
 width:370px;
 height:38px ;
-padding:0 0 0 0;
 margin-top: 0;
-padding-top: 0;
-border-radius: 10px 0 10px 0;
 }
 
 
-header h1 {
-font-size: 25px;
-text-align: center;
-margin-top: 0;
-margin-left: 0;
-font-weight: bold;
-background: linear-gradient(to left, #381E05 0%,#FDF2D7 30%, #CB905C 80%,   #381E05 100%);
-background-size: 200%;
-background-clip: text;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-animation: animate-gradient 15s linear infinite;
-background-color:black;
-border:0.2px solid brown;
-border-radius: 10px 10px 10px 10px;
-box-shadow: 0px 5px 0px gray;
-font-family: arial;
-padding: 10px 60px 10px 60px;
-z-index: -1;
-margin: 3px;
-text-shadow: 0px 0px 8px white;
-z-index: -1;
-position: fixed;
-}
+
 
 
 .sidebar-left {
   position: fixed;
   top: 0;
   left: 0;
-  width: 330px;
+  width: 342px;
   height: 100vh;
-  background: linear-gradient(to right, #CB905C 0%, white 150%);
+  background: linear-gradient(to right, #CB905C -70%,  white 120%);
   padding: 20px;
-  padding-top: 90px;
+  padding-top: 130px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  margin-top: 70px;
+  margin-top: 5px;
   transition: transform 00.5s;
+  z-index: -1;
 }
 
 .sidebar-left.hide {
@@ -82,7 +57,7 @@ transform: translateX(-250px);
 }
 
 .home a {
-  color: white;
+  color: brown;
   text-decoration: none;
   transition: color 0.2s ease;
   text-align: center;
@@ -92,19 +67,18 @@ transform: translateX(-250px);
   margin-left: 4px;
   border-radius: 90px;
   font-size: 20px;
-  background-color: #45D4AD;
+  background-color: white;
   top: 300px;
   font-weight: bolder;
   box-shadow: 0px 5px 0px gray;
   transition: all 0.2s ease-in-out;
-  text-shadow: 0px 2px 2px gold;
   
 }
 
 
 .home:hover a {
   color: white;
-  background-color: #45D4AD;
+  background-color: #D6D6D6;
   border-radius: 5px;
   font-family: 'arial';
   border: 0.5px solid gold;
@@ -126,7 +100,6 @@ transform: translateY(-2px);
  
 .home a:hover {
 color: white;
-opacity: 0.9;
 }
 
 .dropdown-button:active {
@@ -140,7 +113,7 @@ transform: translateY(-5px);
   text-align: center;
   border-radius: 90px;
   font-family: 'arial';
-  background-color: #45D4AD;
+  background-color: white;
   box-shadow: 0px 5px 0px gray;
   transition: all 0.5s ease-in-out;
   font-size: 20px;
@@ -152,11 +125,10 @@ color:white;
 }
 
 .dropdown-button a {
-color: white;
+color: brown;
 font-size: 22px;
 font-weight: bolder;
 transition: all 0.2a ease-in-out;
-text-shadow: 0px 2px 2px gold;
 font-family: 'arial';
   
 }
@@ -203,6 +175,7 @@ background-attachment: fixed;
   background-color: #ADADAD;
   box-shadow: 0px 5px 0px gray;
   transform: translateY(-2px);
+
 }
 
 
@@ -246,7 +219,7 @@ background-attachment: fixed;
 
 
 .dropdown:hover .dropdown-button {
-  background-color: #45D4AD;
+  background-color: #D6D6D6;
 }
 
 
@@ -267,6 +240,63 @@ background-attachment: fixed;
   }
 }
 
+img {
+width: 250px;
+height: 150px;
+align: center;
+margin-top: 0px;
+margin-left: 60px;
+top: 1px;
+z-index: 1;
+position: fixed;
+}
+
+
+
+.bubble-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+  margin-top: 0;
+}
+
+.bubble {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0.5;
+}
+
+.marquee {
+  width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  padding-left: 10%;
+  margin-top: 120px;
+  color: black;
+  margin-left: 20px;
+  font-family: 'arial';
+}
+
+.marquee span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 
 
 
@@ -275,20 +305,32 @@ background-attachment: fixed;
 	
 	</style>
 	<header>
-	<h1>S A U N G &nbsp; S Y A R I</h1>
+	<img src="https://cvws.icloud-content.com/B/ARu74oz5qw1pNAS6igL3fce2rF6hAfM0JvNEwsISbPyQZ38gKA91OdC6/IMG_5659.PNG?o=Av0CBc838bHUsWPaFNN-iUOFQPVM3dBI0xII4SiZ0Gq8&v=1&x=3&a=CAogwev5IGGBHXUk66JobeyGzVA2cTgL9M1NopmJcvMtga8SbxDcoraJ8DIY3P-Ri_AyIgEAUgS2rF6hWgR1OdC6aie4NR6CwXJg33-88X67mv5Yz-m4HfHgvv8g1b17ZVtB7qVMUbtITxxyJ9pAc1H5WheQGIlnwZbOfG2fEbYQxH3byLPvr64ItIEAlNmbQptCzw&e=1748075053&fl=&r=cb61ca8b-d8de-4682-b5a8-1bd6025d974f-1&k=gIpE4rb_sIMdmtX8NcVaxQ&ckc=com.apple.clouddocs&ckz=com.apple.CloudDocs&p=106&s=yfHcYSecAjB0OoZfon4fSf0VtCA&cd=i"></img> 
 	</header>
+	
 	
 <head>
 	
 <body>
+<div class="marquee">
+  <span>🍃 Cantik Dalam Ketaatan 🍃 </span>
+</div>
+
+
+
 	<div class="sidebar-left">                                   
-     <div class="home"><a href="#">HOME</a>
+<br>    
+<br>
+<br>
+<br>
+<div class="home"><a href="#">HOME</a>
      </div>
      
 <br>
 <br>
                   
    <div class="dropdown">
+
   <div class="dropdown-button"><a href="">FEE RESELLER</a></div>
   <div class="dropdown-content">
              
@@ -301,13 +343,67 @@ background-attachment: fixed;
     <div id="Iis"><a href="#">IIS SITI NUR A</a></div>
     <div id="Aneu"><a href="#">ANEU</a></div>
     <div id="Latifah"><a href="#">LATIFAH</a></div>
-				
-				<img src="https://cvws.icloud-content.com/B/ARu74oz5qw1pNAS6igL3fce2rF6hAfM0JvNEwsISbPyQZ38gKA91OdC6/IMG_5659.PNG?o=Av0CBc838bHUsWPaFNN-iUOFQPVM3dBI0xII4SiZ0Gq8&v=1&x=3&a=CAogwev5IGGBHXUk66JobeyGzVA2cTgL9M1NopmJcvMtga8SbxDcoraJ8DIY3P-Ri_AyIgEAUgS2rF6hWgR1OdC6aie4NR6CwXJg33-88X67mv5Yz-m4HfHgvv8g1b17ZVtB7qVMUbtITxxyJ9pAc1H5WheQGIlnwZbOfG2fEbYQxH3byLPvr64ItIEAlNmbQptCzw&e=1748075053&fl=&r=cb61ca8b-d8de-4682-b5a8-1bd6025d974f-1&k=gIpE4rb_sIMdmtX8NcVaxQ&ckc=com.apple.clouddocs&ckz=com.apple.CloudDocs&p=106&s=yfHcYSecAjB0OoZfon4fSf0VtCA&cd=i"></img>
+
+
+
     
     
   </div>
+
 </div>
+
+<div class="bubble-container"></div>
+
+</div>
+
+
+
+
 <script>
+
+
+const marquee = document.querySelector('.marquee span');
+let position = 0;
+
+function animateMarquee() {
+  position -= 1;
+  marquee.style.transform = `translateX(${position}px)`;
+  if (position < -marquee.offsetWidth) {
+    position = marquee.offsetWidth;
+  }
+  requestAnimationFrame(animateMarquee);
+}
+
+animateMarquee();
+
+
+
+const bubbleContainer = document.querySelector('.bubble-container');
+
+function createBubble() {
+  const bubble = document.createElement('div');
+  bubble.classList.add('bubble');
+  bubble.style.left = `${Math.random() * 100}%`;
+  bubble.style.top = `${Math.random() * 100}%`;
+  bubble.style.width = `${Math.random() * 20 + 10}px`;
+  bubble.style.height = bubble.style.width;
+  bubble.style.background = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.1})`;
+  bubbleContainer.appendChild(bubble);
+
+  const animation = bubble.animate([
+    { transform: 'translateY(0)' },
+    { transform: `translateY(-${Math.random() * 200 + 100}px)` }
+  ], {
+    duration: Math.random() * 3000 + 2000,
+    iterations: Infinity
+  });
+
+  setTimeout(() => {
+    bubble.remove();
+  }, 5000);
+}
+
+setInterval(createBubble, 100);
 
 
 
