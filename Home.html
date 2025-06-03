@@ -23,7 +23,7 @@ margin-top: 0;
   left: 0;
   width: 342px;
   height: 100vh;
-  background: linear-gradient(to right, #CB905C -70%,  white 120%);
+  background: linear-gradient(30deg, #CB905C 0%,  white 120%);
   padding: 20px;
   padding-top: 130px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -63,8 +63,8 @@ transform: translateX(-250px);
   text-align: center;
   font-family: 'arial';
   border: 0.5px solid gold;
-  padding: 10px 135px 10px 135px;
-  margin-left: 4px;
+  padding: 10px 140px 10px 140px;
+  margin-left: 2px;
   border-radius: 90px;
   font-size: 20px;
   background-color: white;
@@ -82,8 +82,8 @@ transform: translateX(-250px);
   border-radius: 5px;
   font-family: 'arial';
   border: 0.5px solid gold;
-  padding: 10px 135px 10px 135px;
-  margin-left: 4px;
+  padding: 10px 140px 10px 140px;
+  margin-left: 2px;
   border-radius: 90px;
   font-size: 20px;
   box-shadow: 0px 5px 0px gray;
@@ -99,6 +99,52 @@ transform: translateY(-2px);
 
  
 .home a:hover {
+color: white;
+}
+
+.owner a {
+  color: brown;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  text-align: center;
+  font-family: 'arial';
+  border: 0.5px solid gold;
+  padding: 10px 132px 10px 132px;
+  margin-left: 2px;
+  border-radius: 90px;
+  font-size: 20px;
+  background-color: white;
+  top: 300px;
+  font-weight: bolder;
+  box-shadow: 0px 5px 0px gray;
+  transition: all 0.2s ease-in-out;
+  
+}
+
+
+.owner:hover a {
+  color: white;
+  background-color: #D6D6D6;
+  border-radius: 5px;
+  font-family: 'arial';
+  border: 0.5px solid gold;
+  padding: 10px 132px 10px 132px;
+  margin-left: 2px;
+  border-radius: 90px;
+  font-size: 20px;
+  box-shadow: 0px 5px 0px gray;
+  transform: translateY(-2px);
+}
+
+
+owner:active {
+box-shadow: 0px 5px 0px gray;
+transform: translateY(-2px);
+}
+
+
+ 
+.owner a:hover {
 color: white;
 }
 
@@ -173,8 +219,8 @@ background-attachment: fixed;
 
 .dropdown-button:hover {
   background-color: #ADADAD;
-  box-shadow: 0px 5px 0px gray;
-  transform: translateY(-2px);
+  box-shadow: 0px 50px 5px -20px gray;
+  transform: translateY(-20px);
 
 }
 
@@ -186,7 +232,7 @@ background-attachment: fixed;
   position: absolute;
   background-color: none;
   min-width: 300px;
-  max-height: 250px;
+  max-height: 210px;
   top: 100%;
   left: 15px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -325,6 +371,10 @@ position: fixed;
 <br>
 <div class="home"><a href="#">HOME</a>
      </div>
+<br>
+<br>
+<div id="owner" class="owner"><a href="#">OWNER</a>
+     </div>
      
 <br>
 <br>
@@ -421,6 +471,20 @@ window.addEventListener('click', (e) => {
     dropdownContent.classList.remove('show');
   }
 });
+
+
+const ownerButton = document.getElementById('owner');
+
+  ownerButton.addEventListener('click', () => {
+    const password = prompt('Masukkan password:');
+    const correctPassword = '210617'; 
+
+    if (password === correctPassword) {
+      window.location.href = 'https://agisnursabana.github.io/home/Owner.html'; 
+    } else {
+      alert('Password salah!');
+    }
+  });
 
 
 
