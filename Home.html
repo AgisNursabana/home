@@ -77,8 +77,8 @@ transform: translateX(-250px);
 
 
 .home:hover a {
-  color: white;
-  background-color: #D6D6D6;
+  color: brown;
+  background-color: white;
   border-radius: 5px;
   font-family: 'arial';
   border: 0.5px solid gold;
@@ -93,13 +93,28 @@ transform: translateX(-250px);
 
 home:active {
 box-shadow: 0px 5px 0px gray;
-transform: translateY(-2px);
+transform: translateY(-50px);
+transition: all 0.2s ease-in-out;
+border-radius: 5px;
+  font-family: 'arial';
+  border: 0.5px solid gold;
+  padding: 10px 140px 10px 140px;
+  margin-left: 2px;
+  border-radius: 90px;
 }
 
 
  
 .home a:hover {
-color: white;
+color: brown;
+box-shadow: 0px 5px 0px gray;
+transform: translateY(-2px);
+border-radius: 5px;
+  font-family: 'arial';
+  border: 0.5px solid gold;
+  padding: 10px 140px 10px 140px;
+  margin-left: 2px;
+  border-radius: 90px;
 }
 
 .owner a {
@@ -123,8 +138,8 @@ color: white;
 
 
 .owner:hover a {
-  color: white;
-  background-color: #D6D6D6;
+  color: brown;
+  background-color: white;
   border-radius: 5px;
   font-family: 'arial';
   border: 0.5px solid gold;
@@ -145,17 +160,16 @@ transform: translateY(-2px);
 
  
 .owner a:hover {
-color: white;
+color: brown;
 }
 
 .dropdown-button:active {
-box-shadow: 0px 2px 0px blue;
 transform: translateY(-5px);
 }
 
 .dropdown-button {
   border:0.5px solid white;
-  padding:20px 107px 20px 107px;
+  padding:10px 87px 10px 87px;
   text-align: center;
   border-radius: 90px;
   font-family: 'arial';
@@ -183,11 +197,12 @@ font-family: 'arial';
 
 
 
-.sidebar-left .active {
+.sidebar-left .hover {
   color: #fff;
-  background-color: #444;
+  background-color: #yellow;
   padding: 10px;
-  border-radius: 5px;
+  border: 0.5px solid gold;
+  border-radius: 90px;
 }
 
 .content {
@@ -219,7 +234,6 @@ background-attachment: fixed;
 
 .dropdown-button:hover {
   background-color: #ADADAD;
-  box-shadow: 0px 50px 5px -20px gray;
   transform: translateY(-20px);
 
 }
@@ -232,7 +246,7 @@ background-attachment: fixed;
   position: absolute;
   background-color: none;
   min-width: 300px;
-  max-height: 210px;
+  max-height: 230px;
   top: 100%;
   left: 15px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -265,7 +279,10 @@ background-attachment: fixed;
 
 
 .dropdown:hover .dropdown-button {
-  background-color: #D6D6D6;
+  background-color: white;
+box-shadow: 0px 30px 10px -12px gray;
+transform: translateY(-15px);
+transition: all 0.3s ease-in-out;
 }
 
 
