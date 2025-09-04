@@ -10,7 +10,8 @@
 </head>
 <body>
   <h2>Formulir Order Dimsum</h2>
-  <form id="orderForm">
+
+  <form action="https://script.google.com/macros/s/AKfycbya4nLwrXz_x5MgGhBow3OsAcEMwAkqcZiLuIkOGlTHqDfhNFFS8nzP4XZg7uJSKd8YSA/exec" method="POST">
     <input type="text" name="nama" placeholder="Nama Pemesan" required />
     <select name="jenis" required>
       <option value="">Pilih Jenis Dimsum</option>
@@ -23,38 +24,6 @@
     <button type="submit">Kirim Order</button>
   </form>
 
-  <p id="status"></p>
-
-  <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbwYV4P8tuvMXCOT_ROkoOg1xjnSZeBIXEkco0zY-lAdniNXEXR0EdedB421SnLIBlVE-Q/exec";
-
-
-    document.getElementById("orderForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const form = e.target;
-      const data = {
-        nama: form.nama.value,
-        jenis: form.jenis.value,
-        jumlah: form.jumlah.value,
-        catatan: form.catatan.value
-      };
-
-      fetch(scriptURL, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(response => {
-        document.getElementById("status").innerText = "Order berhasil dikirim!";
-        form.reset();
-      })
-      .catch(error => {
-        document.getElementById("status").innerText = "Gagal mengirim order.";
-        console.error("Error!", error.message);
-      });
-    });
-  </script>
+  <p>* Setelah klik "Kirim Order", kamu akan diarahkan ke halaman konfirmasi dari Google Apps Script.</p>
 </body>
 </html>
