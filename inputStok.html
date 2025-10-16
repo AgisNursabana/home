@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stok Dimsum</title>
+</head>
+<body>
+  <h2>📦 Input & Cek Stok Dimsum</h2>
+
+  <label>Tanggal:</label><br>
+  <input type="date" id="tanggal"><br><br>
+
+  <label>Stok Dimsum Mentai:</label><br>
+  <input type="number" id="stokMentai" placeholder="contoh: 50"><br><br>
+
+  <label>Stok Dimsum Goreng:</label><br>
+  <input type="number" id="stokGoreng" placeholder="contoh: 60"><br><br>
+
+  <button onclick="simpanStok()">Simpan Stok</button>
+  <button onclick="cekStok()">Cek Stok</button>
+
+  <div id="hasil" style="margin-top:20px; font-family:sans-serif;"></div>
+
+ <script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbwPC6kRMd4yodbmhjG7J6aiOvrAEv6rnkNhmAh621w4wQi3R48tGh5qJQKHgp4rkXs07w/exec";
+
+async function simpanStok() {
+  const tanggal = document.getElementById("tanggal").value;
+  const stokMentai = document.getElementById("stokMentai").value;
+  const stokGoreng = document.getElementById("stokGoreng").value;
+
+  try {
+    const response = await fetch(scriptURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tanggal, stokMentai, stokGoreng })
+    });
+    const result = await response.json();
+    alert(result.message || "Data berhasil disimpan!");
+  } catch (e) {
+    alert("Gagal mengirim data: " + e);
+  }
+}
+</script>
+</body>
+</html>
