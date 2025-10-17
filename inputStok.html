@@ -2,58 +2,64 @@
 <html>
 <head>
   <title>📦 Input Stok Dimsum</title>
-  <style>
-    body { font-family: sans-serif; background: #f9f9f9; padding: 20px; }
-    h2 { background: #295E95; color: white; padding: 15px; border-radius: 8px; text-align: center; }
-    label { font-size: 20px; font-weight: bold; }
-    input { font-size: 18px; padding: 10px; margin: 5px 0 15px 0; width: 100%; box-sizing: border-box; }
-    button { font-size: 20px; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; margin-top: 10px; background: #4CAF50; color: white; }
-    #hasil { margin-top: 20px; font-size: 18px; }
-  </style>
 </head>
-<body>
-  <h2>📦 Input Stok Dimsum</h2>
+<body style="font-family: sans-serif;">
+  <h2>📦 Input dan Cek Stok Dimsum</h2>
 
   <label>Tanggal:</label><br>
-  <input type="date" id="tanggal"><br>
+  <input type="date" id="tanggal"><br><br>
 
   <label>Stok Dimsum Mentai:</label><br>
-  <input type="number" id="stokMentai" placeholder="contoh: 50"><br>
+  <input type="number" id="stokMentai" placeholder="contoh: 50"><br><br>
 
   <label>Stok Dimsum Goreng:</label><br>
-  <input type="number" id="stokGoreng" placeholder="contoh: 60"><br>
+  <input type="number" id="stokGoreng" placeholder="contoh: 60"><br><br>
 
   <button onclick="simpanStok()">💾 Simpan Stok</button>
+  <button onclick="cekStok()">🔍 Cek Stok</button>
 
-  <div id="hasil"></div>
+  <div id="hasil" style="margin-top:20px;"></div>
 
-  <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbz9mzl-AcHTAfZK4Ol49JKAz5nRXzRR1eeEaj2fPt8F7rTrl9TtshnmsMSD3lV7j2AYhg/exec";
+<script>
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz9mzl-AcHTAfZK4Ol49JKAz5nRXzRR1eeEaj2fPt8F7rTrl9TtshnmsMSD3lV7j2AYhg/exec";
 
-    async function simpanStok() {
-      const tanggal = document.getElementById("tanggal").value;
-      const stokMentai = document.getElementById("stokMentai").value;
-      const stokGoreng = document.getElementById("stokGoreng").value;
+function simpanStok() {
+  const tanggal = document.getElementById("tanggal").value;
+  const stokMentai = document.getElementById("stokMentai").value;
+  const stokGoreng = document.getElementById("stokGoreng").value;
 
-      if (!tanggal) {
-        alert("⚠️ Mohon isi tanggal terlebih dahulu!");
-        return;
-      }
+  if (!tanggal || !stokMentai || !stokGoreng) {
+    alert("⚠️ Semua kolom wajib diisi!");
+    return;
+  }
 
-      try {
-        const res = await fetch(scriptURL, {
-          method: "POST",
-          body: JSON.stringify({ tanggal, stokMentai, stokGoreng }),
-          headers: { "Content-Type": "application/json" }
-        });
-        const result = await res.json();
-        document.getElementById("hasil").innerHTML = `<p style="color:green;">${result.message}</p>`;
-        alert(result.message);
-      } catch (err) {
-        console.error(err);
-        alert("❌ Gagal menyimpan stok!");
-      }
-    }
-  </script>
+  const url = `${WEB_APP_URL}?action=simpan&tanggal=${encodeURIComponent(tanggal)}&stokMentai=${stokMentai}&stokGoreng=${stokGoreng}`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("hasil").innerHTML = data.message;
+    })
+    .catch(err => {
+      document.getElementById("hasil").innerHTML = "❌ Gagal: " + err;
+    });
+}
+
+function cekStok() {
+  const url = `${WEB_APP_URL}?action=getStock`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("hasil").innerHTML =
+        `📊 Stok terakhir:<br>
+         Mentai: <b>${data.Mentai}</b><br>
+         Goreng: <b>${data.Goreng}</b>`;
+    })
+    .catch(err => {
+      document.getElementById("hasil").innerHTML = "❌ Gagal cek stok: " + err;
+    });
+}
+</script>
 </body>
 </html>
