@@ -7,14 +7,12 @@
     h2 { background: #295E95; color: white; padding: 15px; border-radius: 8px; text-align: center; }
     label { font-size: 20px; font-weight: bold; }
     input { font-size: 18px; padding: 10px; margin: 5px 0 15px 0; width: 100%; box-sizing: border-box; }
-    button { font-size: 20px; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; margin-right: 10px; }
+    button { font-size: 20px; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; margin-top: 10px; background: #4CAF50; color: white; }
     #hasil { margin-top: 20px; font-size: 18px; }
-    .simpan { background: #4CAF50; color: white; }
-    .cek { background: #295E95; color: white; }
   </style>
 </head>
 <body>
-  <h2>📦 Input & Cek Stok Dimsum</h2>
+  <h2>📦 Input Stok Dimsum</h2>
 
   <label>Tanggal:</label><br>
   <input type="date" id="tanggal"><br>
@@ -25,19 +23,17 @@
   <label>Stok Dimsum Goreng:</label><br>
   <input type="number" id="stokGoreng" placeholder="contoh: 60"><br>
 
-  <button class="simpan" onclick="simpanStok()">💾 Simpan Stok</button>
-  <button class="cek" onclick="cekStok()">🔍 Cek Stok</button>
+  <button onclick="simpanStok()">💾 Simpan Stok</button>
 
   <div id="hasil"></div>
 
   <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxVjZMrWeisI4Yp0k6ZBa3BIHDtw-ihsUbA5Np4hUE3EoiiXnVPGELhTLvYCiwU1m3zJg/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyvE06twQxuz4YbVpOEJgdBshXaGYtl0uGNX992FMjCxbpiLQ8aoT4OojMwxP92R-BcvQ/exec";
 
-    // === Fungsi Simpan Stok ===
     async function simpanStok() {
       const tanggal = document.getElementById("tanggal").value;
-      const stokMentai = parseInt(document.getElementById("stokMentai").value) || 0;
-      const stokGoreng = parseInt(document.getElementById("stokGoreng").value) || 0;
+      const stokMentai = document.getElementById("stokMentai").value;
+      const stokGoreng = document.getElementById("stokGoreng").value;
 
       if (!tanggal) {
         alert("⚠️ Mohon isi tanggal terlebih dahulu!");
@@ -47,37 +43,15 @@
       try {
         const res = await fetch(scriptURL, {
           method: "POST",
-          body: JSON.stringify({
-            action: "simpanStok",
-            tanggal,
-            stokMentai,
-            stokGoreng
-          }),
+          body: JSON.stringify({ tanggal, stokMentai, stokGoreng }),
           headers: { "Content-Type": "application/json" }
         });
-
         const result = await res.json();
-        alert(result.message || "✅ Stok berhasil disimpan!");
         document.getElementById("hasil").innerHTML = `<p style="color:green;">${result.message}</p>`;
+        alert(result.message);
       } catch (err) {
+        console.error(err);
         alert("❌ Gagal menyimpan stok!");
-        console.error(err);
-      }
-    }
-
-    // === Fungsi Cek Stok ===
-    async function cekStok() {
-      try {
-        const res = await fetch(scriptURL + "?action=getStock");
-        const data = await res.json();
-        document.getElementById("hasil").innerHTML = `
-          <h3>📊 Stok Terkini:</h3>
-          <p>Mentai: <b>${data.mentai}</b> pcs</p>
-          <p>Goreng: <b>${data.goreng}</b> pcs</p>
-        `;
-      } catch (err) {
-        document.getElementById("hasil").innerHTML = `<p style="color:red;">Gagal ambil data stok!</p>`;
-        console.error(err);
       }
     }
   </script>
