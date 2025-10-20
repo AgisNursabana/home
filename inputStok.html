@@ -1,69 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Input dan Cek Stok Dimsum</title>
-  <style>
-    body { font-family: sans-serif; margin: 20px; }
-    input { width: 80%; height: 30px; font-size: 18px; margin-bottom: 10px; }
-    button { font-size: 16px; padding: 6px 12px; margin: 5px; }
-  </style>
+  <title>Input Stok Dimsum</title>
+  <meta charset="UTF-8">
 </head>
 <body>
   <h2>📦 Input dan Cek Stok Dimsum</h2>
 
   <label>Tanggal:</label><br>
-  <input type="date" id="tanggal"><br>
+  <input type="date" id="tanggal"><br><br>
 
   <label>Stok Dimsum Mentai:</label><br>
-  <input type="number" id="mentai" placeholder="Isi stok mentai"><br>
+  <input type="number" id="stokMentai"><br><br>
 
   <label>Stok Dimsum Goreng:</label><br>
-  <input type="number" id="goreng" placeholder="Isi stok goreng"><br>
+  <input type="number" id="stokGoreng"><br><br>
 
-  <button onclick="simpan()">💾 Simpan Stok</button>
-  <button onclick="cek()">🔍 Cek Stok</button>
+  <button onclick="simpanStok()">💾 Simpan Stok</button>
+  <button onclick="cekStok()">🔍 Cek Stok</button>
 
-  <p id="status"></p>
+  <p id="hasil"></p>
 
   <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxj7wCxQavusi6KgsOE6g_7b-_hpUunAJ-FkqpAE9Mb4tMMHO4GxK5D1cD0vJB8hSJDOw/exec";
+    const url = "https://script.google.com/macros/s/AKfycbx0_qrctiLq31SH0dFzJTjkguRNz2OFiotUE-tFJCsnjxd4dMy_v_1veAjfoemD4uZu6w/exec";
 
-    async function simpan() {
-      const tanggal = document.getElementById('tanggal').value;
-      const mentai = document.getElementById('mentai').value;
-      const goreng = document.getElementById('goreng').value;
-      const status = document.getElementById('status');
-      
-      if (!tanggal) {
-        status.textContent = "❌ Tanggal belum diisi.";
-        return;
-      }
+    function simpanStok() {
+      const tanggal = document.getElementById("tanggal").value;
+      const stokMentai = document.getElementById("stokMentai").value;
+      const stokGoreng = document.getElementById("stokGoreng").value;
 
-      try {
-        const res = await fetch(scriptURL, {
-          method: 'POST',
-          body: new URLSearchParams({ tanggal, mentai, goreng })
-        });
-        const data = await res.json();
-        status.textContent = data.message;
-      } catch (err) {
-        status.textContent = "❌ Gagal simpan: " + err.message;
-      }
+      fetch(url, {
+        method: "POST",
+        body: new URLSearchParams({
+          tanggal: tanggal,
+          stokMentai: stokMentai,
+          stokGoreng: stokGoreng
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("hasil").innerHTML = data.message;
+      })
+      .catch(err => {
+        document.getElementById("hasil").innerHTML = "❌ Gagal: " + err;
+      });
     }
 
-    async function cek() {
-      const status = document.getElementById('status');
-      try {
-        const res = await fetch(scriptURL);
-        const data = await res.json();
-        document.getElementById('tanggal').value = data.tanggal;
-        document.getElementById('mentai').value = data.mentai;
-        document.getElementById('goreng').value = data.goreng;
-        status.textContent = "✅ Data stok terakhir berhasil dimuat.";
-      } catch (err) {
-        status.textContent = "❌ Gagal cek stok: " + err.message;
-      }
+    function cekStok() {
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("hasil").innerHTML =
+            `📅 ${data.tanggal}<br>Mentai: ${data.stokMentai}<br>Goreng: ${data.stokGoreng}`;
+        })
+        .catch(err => {
+          document.getElementById("hasil").innerHTML = "❌ Gagal cek stok: " + err;
+        });
     }
   </script>
 </body>
