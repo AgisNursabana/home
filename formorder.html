@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+<title>Order Dimsum</title>
+
+<style>
+input {
+  width: 96%;
+  height: 50px;
+  font-size: 30px;
+}
+body {
+  font-family: sans-serif;
+  background-color: #f2f2f2;
+}
+
+textarea {
+  font-size: 30px;
+  width: 96%;
+  height: 150px;
+}
+
+.form-container {
+  padding: 10px;
+  padding-top: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 98%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 60px;
+  color: #fff;
+  background-color: #295E95;
+  padding: 20px 0;
+  font-family: Verdana;
+}
+
+.menu-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.menu-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.counter-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.counter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.counter-container button {
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  border: none;
+  background-color: #295E95;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.counter-container input {
+  width: 100px;
+  text-align: center;
+  font-size: 30px;
+  border: 2px solid #295E95;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.warning {
+  color: red;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.order-summary {
+  margin-top: 30px;
+  padding: 15px;
+  border: 2px solid #295E95;
+  border-radius: 10px;
+  background: #f9f9f9;
+  font-size: 22px;
+}
+
+.order-summary h3 {
+  margin-top: 0;
+  color: #295E95;
+}
+
+button[type="submit"] {
+  padding: 15px 30px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 30px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 768px) {
+  .menu-item {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .counter-container button {
+    width: 45px;
+    height: 45px;
+    font-size: 22px;
+  }
+
+  .counter-container input {
+    width: 80px;
+    font-size: 22px;
+  }
+
+  .order-summary {
+    font-size: 18px;
+  }
+}
+
+footer {
+  background-color: #28384B;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #444;
+  bottom: 0;
+}
+
+footer h3 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-family: arial;
+  
+}
+
+p{
+font-size: 30px;
+font-family: arial;
+}
+
+#email a{
+  color: white;
+  text-decoration: none;
+  margin-left: 150px;
+  margin-right: 95px;
+  font-size: 24px;
+}
+
+#wa a{
+  color: white;
+  text-decoration: none;
+  margin-left: 0px;
+  margin-right: 95px;
+  font-size: 24px;
+}
+
+footer a i {
+  font-size: 24px;
+  
+}
+
+footer p {
+  font-size: 24px;
+}
+</style>
+</head>
+<body>
+
+<h2>Form Order Dimsum Kai</h2>
+
+<div class="order-summary" style="border:2px solid #FF9800; background:#FFF8E1;">
+  <h3 style="color:#E65100;">Stok Dimsum Saat Ini</h3>
+  <p>Dimsum Mentai & Kuah: <b id="stokMentaiKuah">Memuat...</b> porsi</p>
+  <p>Dimsum Goreng: <b id="stokGoreng">Memuat...</b> porsi</p>
+</div>
+
+<form class="form-container" 
+      action="https://script.google.com/macros/s/AKfycbxgZt6k0x1muI_EUma5mZOwBtA-gzB50m5P2MckxrpMGL455UJsn_3fiS-3LgCgra_07Q/exec" 
+      method="POST" oninput="updateSummary()">
+  
+  <input type="text" name="nama" id="nama" placeholder="Nama Pemesan" required />
+
+  <!-- Mentai -->
+  <div class="menu-item">
+    <div class="menu-left">
+      <img src="https://i.imgur.com/3gpsEvk.jpeg">
+      <div class="menu-title">Dimsum Mentai isi 5</div>
+    </div>
+    <div class="counter-wrapper">
+      <div class="counter-container">
+        <button type="button" onclick="decreaseValue('mentai')">-</button>
+        <input type="number" id="mentai" name="mentai" value="0" readonly>
+        <button type="button" onclick="increaseValue('mentai')">+</button>
+      </div>
+      <div id="warning-mentai" class="warning"></div>
+    </div>
+  </div>
+
+  <!-- Kuah -->
+  <div class="menu-item">
+    <div class="menu-left">
+      <img src="https://i.imgur.com/jqzsmZ8.jpeg">
+      <div class="menu-title">Dimsum Kuah isi 4</div>
+    </div>
+    <div class="counter-wrapper">
+      <div class="counter-container">
+        <button type="button" onclick="decreaseValue('kuah')">-</button>
+        <input type="number" id="kuah" name="kuah" value="0" readonly>
+        <button type="button" onclick="increaseValue('kuah')">+</button>
+      </div>
+      <div id="warning-kuah" class="warning"></div>
+    </div>
+  </div>
+
+  <!-- Goreng -->
+  <div class="menu-item">
+    <div class="menu-left">
+      <img src="https://i.imgur.com/k0t4e8E.jpeg">
+      <div class="menu-title">Dimsum Goreng isi 4</div>
+    </div>
+    <div class="counter-wrapper">
+      <div class="counter-container">
+        <button type="button" onclick="decreaseValue('goreng')">-</button>
+        <input type="number" id="goreng" name="goreng" value="0" readonly>
+        <button type="button" onclick="increaseValue('goreng')">+</button>
+      </div>
+      <div id="warning-goreng" class="warning"></div>
+    </div>
+  </div>
+
+  <textarea id="catatan" name="catatan" placeholder="Catatan Tambahan (optional)/ boleh dikosongkan"></textarea>
+
+  <div class="order-summary" id="order-summary">
+    <h3>Ringkasan Order</h3>
+    <p>Nama: -</p>
+    <ul></ul>
+    <p><strong>Total Porsi: 0</strong></p>
+  </div>
+  
+  <button type="submit">Submit</button>
+</form>
+
+<footer>                                                        
+  <h3>CONTACT US :</h3>
+  <div style="display: flex; font-family: 'Arial';  margin-bottom: 24px;">
+    <div id="email"><a href="mailto:agisnursabana@gmail.com" target="blank" ">
+      <i class="fa fa-envelope"></i> agisnursabana@gmail.com
+    </a></div>
+    <div id="wa"><a href="https://wa.me/6285810635520?text=Hello%20Dimsum%20kai%20%F0%9F%98%8A">                                                                                                           <i class="fab fa-whatsapp" ></i> 085810635520
+    </a></div>
+  </div>
+  <p>&copy; 2025 Dimsum Kai</p>
+</footer>
+
+<script>
+let stokMentaiKuah = 0;
+let stokGoreng = 0;
+
+const menus = {
+  mentai: "Dimsum Mentai isi 5",
+  goreng: "Dimsum Goreng isi 4",
+  kuah: "Dimsum Kuah isi 4"
+};
+
+function increaseValue(id) {
+  let input = document.getElementById(id);
+  let val = parseInt(input.value);
+  let sisa = getSisa(id, val + 1);
+  if (sisa >= 0) input.value = val + 1;
+  showWarning(id);
+  updateSummary();
+}
+
+function decreaseValue(id) {
+  let input = document.getElementById(id);
+  let val = parseInt(input.value);
+  if (val > 0) input.value = val - 1;
+  showWarning(id);
+  updateSummary();
+}
+
+function getSisa(id, jumlahPesan) {
+  let mentai = parseInt(document.getElementById("mentai").value);
+  let kuah = parseInt(document.getElementById("kuah").value);
+  let goreng = parseInt(document.getElementById("goreng").value);
+  if (id === "mentai" || id === "kuah") {
+    let totalMentaiKuah = (id === "mentai" ? jumlahPesan + kuah : mentai + jumlahPesan);
+    return stokMentaiKuah - totalMentaiKuah;
+  }
+  if (id === "goreng") return stokGoreng - jumlahPesan;
+  return 0;
+}
+
+function showWarning(id) {
+  let sisa = getSisa(id, parseInt(document.getElementById(id).value));
+  let warning = document.getElementById("warning-" + id);
+  if (sisa <= 3 && sisa >= 1) warning.textContent = "Sisa stok : " + sisa + " porsi!";
+  else if (sisa <= 0) warning.textContent = "Stok habis!";
+  else warning.textContent = "";
+}
+
+function updateSummary() {
+  let nama = document.getElementById("nama").value;
+  let summaryBox = document.getElementById("order-summary");
+  let list = summaryBox.querySelector("ul");
+  list.innerHTML = "";
+  let total = 0;
+  for (let key in menus) {
+    let val = parseInt(document.getElementById(key).value);
+    if (val > 0) {
+      let li = document.createElement("li");
+      li.textContent = menus[key] + " : " + val + " porsi";
+      list.appendChild(li);
+      total += val;
+    }
+  }
+  summaryBox.querySelector("p").textContent = "Nama: " + (nama ? nama : "-");
+  summaryBox.querySelector("strong").textContent = "Total Porsi: " + total;
+}
+
+// Ambil stok dari sheet
+fetch("https://script.google.com/macros/s/AKfycbxgZt6k0x1muI_EUma5mZOwBtA-gzB50m5P2MckxrpMGL455UJsn_3fiS-3LgCgra_07Q/exec")
+  .then(r => r.json())
+  .then(data => {
+    stokMentaiKuah = data.mentai_kuah ?? 0;
+    stokGoreng = data.goreng ?? 0;
+    document.getElementById("stokMentaiKuah").textContent = stokMentaiKuah;
+    document.getElementById("stokGoreng").textContent = stokGoreng;
+  });
+</script>
+</body>
+</html>
