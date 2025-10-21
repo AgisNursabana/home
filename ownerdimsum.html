@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+
+  <title>Order Dimsum</title>
+
+<img src="https://i.imgur.com/Dxu61lJ.jpeg" width= "960" height="250">
+  <style>
+
+
+img {
+opacity:0.8;
+box-shadow: 0 100px 150px rgba(250, 250, 250, 0.8);
+}
+
+h1 {
+  font-size: 45px;
+  text-align: center;
+  font-family: 'arial';
+  margin-top: 70px;
+  background: linear-gradient(to left, black 0%, #8AFFC7  90%,white 95%, black 100%);
+background-size: 200%;
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+animation: animate-gradient 15s linear infinite;
+}
+
+
+@keyframes animate-gradient {
+  to {background-position: 0%;}
+  to {backgroun-position: 100%;}
+  to {background-position: 200%;}
+}
+
+
+h2 {
+  font-size: 40px;
+  text-align: center;
+  font-family: 'helvetica';
+}
+
+ body {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE8W_SyQn3cYpIFhkE4jl4i3ZInQeiRF2HoiY3JnXYUgeXhnnjRIA0XcQ2&s=10');
+  background-size: cover;
+  background-position: center;
+  height: 1500px;
+}
+
+
+.container {
+
+border: 2px solid black;
+padding: 150px 0  150px 0 ;
+font-size: 40px;
+color: #fff;
+margin-top: 20px;
+margin-bottom: 10px;
+border-radius: 70px 5px 70px 5px;
+
+}
+
+.home {
+border : 1px solid black;
+border-radius: 10px;
+padding : 20px;
+margin: 20px;
+text-align: center;
+}
+
+.home a {
+font-family: 'verdana';
+font-size: 50px;
+color: white;
+text-decoration: none;
+}
+
+.home:hover {
+
+background-color: black;
+
+}
+
+.Orderan {
+border : 1px solid black;
+border-radius: 10px;
+padding : 20px;
+margin: 20px;
+text-align: center;
+}
+
+.Orderan a {
+font-family: 'verdana';
+font-size: 50px;
+color: white;
+text-decoration: none;
+}
+
+
+.Orderan:hover {
+
+background-color: black;
+
+}
+
+.Income {
+border : 1px solid black;
+border-radius: 10px;
+padding : 20px;
+margin: 20px;
+text-align: center;
+}
+
+.Income a {
+font-family: 'verdana';
+font-size: 50px;
+color: white;
+text-decoration: none;
+}
+
+
+.Income:hover {
+
+background-color: black;
+
+}
+
+.Modal {
+border : 1px solid black;
+border-radius: 10px;
+padding : 20px;
+margin: 20px;
+text-align: center;
+}
+
+.Modal a {
+font-family: 'verdana';
+font-size: 50px;
+color: white;
+text-decoration: none;
+}
+
+
+.Modal:hover {
+
+background-color: black;
+
+}
+
+
+.Keuntungan {
+border : 1px solid black;
+border-radius: 10px;
+padding : 20px;
+margin: 20px;
+text-align: center;
+background-color: #06D64B;
+}
+
+.Keuntungan a {
+font-family: 'verdana';
+font-size: 50px;
+color: white;
+text-decoration: none;
+}
+
+
+
+footer {
+  background-color: #28384B;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #444;
+  bottom: 0;
+}
+
+footer h3 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-family: arial;
+  
+}
+
+p{
+font-size: 30px;
+font-family: arial;
+}
+
+#email a{
+  color: white;
+  text-decoration: none;
+  margin-left: 150px;
+  margin-right: 95px;
+  font-size: 24px;
+}
+
+#wa a{
+  color: white;
+  text-decoration: none;
+  margin-left: 0px;
+  margin-right: 95px;
+  font-size: 24px;
+}
+
+footer a i {
+  font-size: 24px;
+  
+}
+
+footer p {
+  font-size: 24px;
+}
+
+</style>
+</head>
+<body>
+
+
+<div class="container">                                   
+
+<div class="home"><a href="http://localhost:9898/Local/Agis/Form/Dimsum%20kai%20Home%20Page.html?28B14FD0-52C7-4D6F-AAD8-C787A1AE777E">HOME</a>
+     </div>
+<div id="Orderan" class="Orderan"><a href="">ORDER LIST</a></div>
+<div id="Income" class="Income"><a href="">INCOME</a></div>
+<div id="Modal" class="Modal"><a href="">EXPENSE</a></div>
+<br>
+<div id="Keuntungan" class="Keuntungan"><a href="">PROFIT</a></div>
+     </div>
+
+</body>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<script>
+
+   const orderList = document.getElementById('Orderan');
+
+  orderList.addEventListener('click', () => {
+    const password = prompt('Masukkan password:');
+    const correctPassword = '210617'; 
+
+    if (password === correctPassword) {
+      window.location.href = ''; 
+    } else {
+      alert('Password salah!');
+    }
+  });
+
+
+
+   const income = document.getElementById('Income');
+
+  income.addEventListener('click', () => {
+    const password = prompt('Masukkan password:');
+    const correctPassword = '210617'; 
+
+    if (password === correctPassword) {
+      window.location.href = ''; 
+    } else {
+      alert('Password salah!');
+    }
+  });
+
+
+
+   const Modal = document.getElementById('Modal');
+
+  Modal.addEventListener('click', () => {
+    const password = prompt('Masukkan password:');
+    const correctPassword = '210617'; 
+
+    if (password === correctPassword) {
+      window.location.href = ''; 
+    } else {
+      alert('Password salah!');
+    }
+  });
+
+
+
+   const totalKeuntungan = document.getElementById('Keuntungan');
+
+  totalKeuntungan.addEventListener('click', () => {
+    const password = prompt('Masukkan password:');
+    const correctPassword = '210617'; 
+
+    if (password === correctPassword) {
+      window.location.href = ''; 
+    } else {
+      alert('Password salah!');
+    }
+  });
+
+</script>
+
+
+<footer>                                                        
+  <h3>CONTACT US :</h3>
+  <div style="display: flex; font-family: 'Arial';  margin-bottom: 24px;">
+    <div id="email"><a href="mailto:agisnursabana@gmail.com" target="blank" ">
+      <i class="fa fa-envelope"></i> agisnursabana@gmail.com
+    </a></div>
+    <div id="wa"><a href="https://wa.me/6285810635520?text=Hello%20Dimsum%20kai%20%F0%9F%98%8A">                                                                                                           <i class="fab fa-whatsapp" ></i> 085810635520
+    </a></div>
+  </div>
+  <p>&copy; 2025 Dimsum Kai</p>
+</footer>
+
+
+
+
+</html>
+
+
