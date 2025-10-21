@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <meta charset="UTF-8">
+  <title>Orderan dari Spreadsheet</title>
+ 
+<style>
+
+body {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE8W_SyQn3cYpIFhkE4jl4i3ZInQeiRF2HoiY3JnXYUgeXhnnjRIA0XcQ2&s=10');
+  background-size: cover;
+  background-position: center;
+  height: 1500px;
+}
+
+h2 {
+
+text-align: center;
+font-size: 60px;
+font-family: 'arial';
+margin-top: 20px;
+background-color: white;
+
+}
+
+/* ✅ Tambahan: box daftar orderan */
+#daftar-orderan {
+  border: 2px solid #333;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.5);
+  max-height: 600px; /* tinggi baku */
+  overflow-y: auto;  /* scroll kalau konten panjang */
+  margin-bottom: 20px;
+}
+
+/* ✅ Tambahan: box total orderan */
+#total-orderan {
+  border: 2px solid #444;
+  border-radius: 10px;
+  background: rgba(249, 249, 249, 0.8);
+
+  padding: 15px;
+  font-size: 28px;
+}
+
+label {
+
+text-align: center;
+font-size: 50px;
+font-family: 'arial';
+margin-left: 10px;
+
+}
+
+input {
+
+text-align: center;
+font-size: 40px;
+font-family: 'arial';
+color: black;
+
+}
+
+h3 {
+font-size: 50px;
+margin-top: 10px;
+}
+
+ul {
+font-size: 30px;
+}
+
+#daftar-orderan {
+
+border: 1px solid white;
+
+}
+
+.home {
+border : 1px solid black;
+border-radius: 10px;
+padding : 20px;
+margin: 20px;
+text-align: center;
+background-color: black;
+opacity: 0.9;
+}
+
+.home a {
+font-family: 'verdana';
+font-size: 50px;
+color: white;
+text-decoration: none;
+}
+
+.home:hover {
+
+background-color: black;
+
+}
+
+footer {
+  background-color: #28384B;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #444;
+  margin-bottom:5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+footer h2 {
+  margin-bottom: 10px;
+  
+}
+
+footer h3 {
+font-size: 25px;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+footer a i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+footer p {
+  font-size: 22px;
+}
+
+footer a {
+
+font-size: 20px;
+
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE8W_SyQn3cYpIFhkE4jl4i3ZInQeiRF2HoiY3JnXYUgeXhnnjRIA0XcQ2&s=10');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Wrapper konten agar bisa mendorong footer */
+.wrapper {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Footer tetap di bawah */
+footer {
+  background-color: #28384B;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #444;
+  margin-top: auto; /* Penting */
+}
+
+
+</style>
+</head>
+<body>
+  <div class="wrapper">
+    <h2>SUMMARY ORDER</h2>
+
+    <label for="tanggal">Choose Date:</label>
+    <input type="date" id="tanggal">
+
+    <h3>Result:</h3>
+    <ul id="daftar-orderan"></ul>
+    <div id="total-orderan"></div>
+  </div>
+
+<script>
+  const inputTanggal = document.getElementById("tanggal");
+  const hasil = document.getElementById("daftar-orderan");
+  const totalBox = document.getElementById("total-orderan"); // ✅ ditambahkan
+
+  const url = "https://opensheet.elk.sh/1UrnTWRNA1cbVjcF_gy53fcccwW87tyub1Ogyp1s8nI0/Orderan%20Dimsum";
+
+  let orderan = [];
+
+  // Ambil data dari Google Sheet
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      orderan = data;
+    });
+
+  function tampilkanOrderan(tanggalDipilih) {
+    hasil.innerHTML = "";
+    totalBox.innerHTML = ""; // reset box total
+
+    if (!tanggalDipilih) return;
+
+    const orderanHariIni = orderan.filter(o => o["Tanggal Bersih"] === tanggalDipilih);
+
+    if (orderanHariIni.length > 0) {
+      const totalPerJenis = {};
+
+      orderanHariIni.forEach(o => {
+        const porsi = parseInt(o["Jumlah/ Porsi"]) || 0;
+        const jenis = o.Orderan;
+
+        // Ambil angka setelah kata "isi"
+        const matchIsi = jenis.match(/isi\s*(\d+)/i);
+        const isiPerPorsi = matchIsi ? parseInt(matchIsi[1]) : 1;
+
+        // Hitung pcs
+        const jumlahPcs = porsi * isiPerPorsi;
+
+        // Tambahkan ke hasil tampilan per orang
+        const li = document.createElement("li");
+        li.textContent = `${o.Nama} | ${jenis} | ${porsi} porsi × ${isiPerPorsi} = ${jumlahPcs} pcs`;
+        hasil.appendChild(li);
+
+        // Tentukan kategori besar (Mentai / Goreng / Lainnya)
+        let kategori = "";
+        if (jenis.toLowerCase().includes("mentai")) {
+          kategori = "Dimsum Mentai";
+        } else if (jenis.toLowerCase().includes("goreng")) {
+          kategori = "Dimsum Goreng";
+        } else {
+          kategori = "Dimsum kuah";
+        }
+
+        // Hitung total per kategori
+        if (totalPerJenis[kategori]) {
+          totalPerJenis[kategori] += jumlahPcs;
+        } else {
+          totalPerJenis[kategori] = jumlahPcs;
+        }
+      });
+
+      // ✅ tampilkan total orderan di box terpisah
+      let html = `<strong>Total Orderan (pcs):</strong><br>`;
+      for (const kategori in totalPerJenis) {
+        html += `${kategori}: ${totalPerJenis[kategori]} pcs <br>`;
+      }
+      totalBox.innerHTML = html;
+
+    } else {
+      hasil.innerHTML = `<li>Tidak ada orderan pada tanggal ${tanggalDipilih}</li>`;
+    }
+  }
+
+  inputTanggal.addEventListener("input", (e) => {
+    tampilkanOrderan(e.target.value);
+  });
+</script>
+
+
+
+
+<div class="home"><a href="https://agisnursabana.github.io/home/dimsumkaihome.html">HOME</a>
+     </div>
+<footer>                                                        
+  <h3>CONTACT US :</h3>
+  <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+    <a href="mailto:desirahmawati011297@gmail.com" target="blank" style="color: #fff; text-decoration: none; margin-right: 20px; display: flex; align-items: center;">
+      <i class="fa fa-envelope" style="font-size: 24px; margin-right: 13px;"></i> desirahmawati011297@gmail.com
+    </a>
+    <a href="https://wa.me/6285810635520?text=Hello%20Dimsum%20kai%20%F0%9F%98%8A">                                                                                                           <i class="fab fa-whatsapp" style="font-size: 24px; margin-right: 13px;"></i> 085810635520
+    </a>
+  </div>
+  <p>&copy; 2025 Dimsum Kai</p>
+</footer>
+</body>
+
+</html>
+
+
+
+
