@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <meta charset="UTF-8">
+  <title>Summary Income</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      font-size: 60px;
+      margin-bottom: 20px;
+      background-color: white;
+    }
+    label, input {
+      font-size: 20px;
+      margin: 10px 0;
+      display: block;
+    }
+    ul {
+      font-size: 18px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      list-style: none;
+    }
+    ul li {
+      margin: 6px 0;
+    }
+    strong {
+      font-size: 20px;
+    }
+    #chartContainer {
+      margin-top: 40px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+   
+h3 {
+font-size: 30px;
+margin: 5px;
+}
+
+/* Tombol HOME fixed di atas footer */
+h1 {
+  bottom: 20px; /* pas di atas footer */
+  left: 50%;
+  transform: translateX(0%);
+  z-index: 1000;
+  
+  color: black;
+  padding: 10px 350px 10px 350px;
+  border : 1px solid black;
+  font-size: 75px;
+  border-radius: 10px;
+  margin-top: 200px;
+}
+
+
+h1:hover {
+background-color: black;
+}
+
+a h1 {
+color: black;
+}
+
+a {
+text-decoration: none;
+color: white;
+}
+#total-semua {
+font-size: 50px;
+font-weight: bolder;
+color: green;
+}
+
+footer {
+  background-color: #28384B;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #444;
+  bottom: 0;
+}
+
+footer h3 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-family: arial;
+  
+}
+
+p{
+font-size: 30px;
+font-family: arial;
+}
+
+#email a{
+  color: white;
+  text-decoration: none;
+  margin-left: 150px;
+  margin-right: 95px;
+  font-size: 24px;
+}
+
+#wa a{
+  color: white;
+  text-decoration: none;
+  margin-left: 0px;
+  margin-right: 95px;
+  font-size: 24px;
+}
+
+footer a i {
+  font-size: 24px;
+  
+}
+
+footer p {
+  font-size: 24px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE8W_SyQn3cYpIFhkE4jl4i3ZInQeiRF2HoiY3JnXYUgeXhnnjRIA0XcQ2&s=10');
+  background-size: cover;
+  background-position: center;
+}
+
+
+  </style>
+</head>
+<body>
+  <h2>SUMMARY INCOME</h2>
+  <label for="tanggal">Choose Date:</label>
+  <input type="date" id="tanggal">
+
+  <h3>Result:</h3>
+  <ul id="daftar-income"></ul>
+
+  <h3>Total Income Semua Tanggal:</h3>
+  <p id="total-semua"></p>
+
+  <div id="chartContainer">
+    <h3>Grafik Income per Tanggal</h3>
+    <canvas id="incomeChart"></canvas>
+  </div>
+
+ <script>
+  const inputTanggal = document.getElementById("tanggal");
+  const hasil = document.getElementById("daftar-income");
+  const totalSemuaEl = document.getElementById("total-semua");
+  const ctx = document.getElementById("incomeChart").getContext("2d");
+
+  const url = "https://opensheet.elk.sh/1UrnTWRNA1cbVjcF_gy53fcccwW87tyub1Ogyp1s8nI0/Orderan%20Dimsum";
+
+  let orderan = [];
+  let incomePerTanggal = {};
+  let chart;
+
+  // 👉 fungsi untuk hitung harga & pcs
+  function hitungOrder(jenis, porsi) {
+    const matchIsi = jenis.match(/isi\s*(\d+)/i);
+    const isiPerPorsi = matchIsi ? parseInt(matchIsi[1]) : 1;
+
+    let hargaPerPorsi = 0;
+    if (jenis.toLowerCase().includes("mentai") && isiPerPorsi === 5) {
+      hargaPerPorsi = 15000;
+    } else if (jenis.toLowerCase().includes("goreng") && isiPerPorsi === 4) {
+      hargaPerPorsi = 15000;
+    } else if (jenis.toLowerCase().includes("kuah") && isiPerPorsi === 4) {
+      hargaPerPorsi = 15000;
+    }
+
+    const jumlahPcs = porsi * isiPerPorsi;
+    const totalHarga = porsi * hargaPerPorsi;
+
+    return { hargaPerPorsi, jumlahPcs, totalHarga };
+  }
+
+  // Ambil data dari Google Sheet
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      orderan = data;
+      hitungIncomeSemuaTanggal();
+    });
+
+  function hitungIncomeSemuaTanggal() {
+    incomePerTanggal = {};
+    let totalSemua = 0;
+
+    orderan.forEach(o => {
+      const tanggal = o["Tanggal Bersih"];
+      const porsi = parseInt(o["Jumlah/ Porsi"]) || 0;
+      const jenis = o.Orderan;
+
+      const { totalHarga } = hitungOrder(jenis, porsi);
+      totalSemua += totalHarga;
+
+      if (incomePerTanggal[tanggal]) {
+        incomePerTanggal[tanggal] += totalHarga;
+      } else {
+        incomePerTanggal[tanggal] = totalHarga;
+      }
+    });
+
+    totalSemuaEl.textContent = `Rp${totalSemua.toLocaleString("id-ID")}`;
+    totalSemuaEl.style.backgroundColor = "white";
+    totalSemuaEl.style.padding = "5px";
+    totalSemuaEl.style.borderRadius = "5px";
+    totalSemuaEl.style.color = "green";
+
+    tampilkanChart();
+  }
+
+  function tampilkanChart() {
+    const labels = Object.keys(incomePerTanggal);
+    const data = Object.values(incomePerTanggal);
+
+    if (chart) chart.destroy();
+
+    chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Income per Tanggal (Rp)',
+          data: data,
+          backgroundColor: "#4CAF50"
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              callback: function(value) {
+                return 'Rp' + value.toLocaleString();
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+
+  function tampilkanIncome(tanggalDipilih) {
+    hasil.innerHTML = "";
+    if (!tanggalDipilih) return;
+
+    const orderanHariIni = orderan.filter(o => o["Tanggal Bersih"] === tanggalDipilih);
+
+    if (orderanHariIni.length > 0) {
+      let totalIncome = 0;
+
+      orderanHariIni.forEach(o => {
+        const porsi = parseInt(o["Jumlah/ Porsi"]) || 0;
+        const jenis = o.Orderan;
+
+        const { hargaPerPorsi, jumlahPcs, totalHarga } = hitungOrder(jenis, porsi);
+        totalIncome += totalHarga;
+
+        const li = document.createElement("li");
+        li.textContent = `${o.Nama} | ${jenis} | ${porsi} porsi × Rp${hargaPerPorsi.toLocaleString()} = Rp${totalHarga.toLocaleString()} (${jumlahPcs} pcs)`;
+        hasil.appendChild(li);
+      });
+
+      const hr = document.createElement("hr");
+      hasil.appendChild(hr);
+
+      const totalItem = document.createElement("li");
+      totalItem.innerHTML = `<strong>Total Income Hari Itu: Rp${totalIncome.toLocaleString()}</strong>`;
+      hasil.appendChild(totalItem);
+    } else {
+      hasil.innerHTML = `<li>Tidak ada orderan pada tanggal ${tanggalDipilih}</li>`;
+    }
+  }
+
+  inputTanggal.addEventListener("input", (e) => {
+    tampilkanIncome(e.target.value);
+  });
+</script>
+
+
+<h1><a href="http://localhost:9898/Local/Agis/Form/Dimsum%20kai%20Home%20Page.html?A8B900EA-957D-402E-AA4F-3A9FDA3AEFE7">Home</a></h1>
+
+<footer>                                                        
+  <h3>CONTACT US :</h3>
+  <div style="display: flex; font-family: 'Arial';  margin-bottom: 24px;">
+    <div id="email"><a href="mailto:agisnursabana@gmail.com" target="blank" ">
+      <i class="fa fa-envelope"></i> agisnursabana@gmail.com
+    </a></div>
+    <div id="wa"><a href="https://wa.me/6285810635520?text=Hello%20Dimsum%20kai%20%F0%9F%98%8A">                                                                                                           <i class="fab fa-whatsapp" ></i> 085810635520
+    </a></div>
+  </div>
+  <p>&copy; 2025 Dimsum Kai</p>
+</footer>
+
+</body>
+</html>
