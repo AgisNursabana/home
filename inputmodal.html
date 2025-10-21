@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <meta charset="UTF-8">
+  <title>Input Modal</title>
+<style>
+
+body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      font-size: 70px;
+      margin-bottom: 20px;
+      background-color: white;
+    }
+    label, input {
+      font-size: 30px;
+      margin: 1px 0;
+      width: 96%;
+      display: block;
+    }
+    ul {
+      font-size: 18px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      list-style: none;
+    }
+    ul li {
+      margin: 6px 0;
+    }
+    strong {
+      font-size: 20px;
+    }
+    #chartContainer {
+      margin-top: 40px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+h5 {
+font-size: 40px;
+margin: 20px 10px;
+
+}
+
+
+/* Tombol HOME fixed di atas footer */
+h1 {
+  bottom: 20px; /* pas di atas footer */
+  left: 50%;
+  transform: translateX(0%);
+  z-index: 1000;
+  
+  color: black;
+  padding: 10px 350px 10px 350px;
+  border : 1px solid black;
+  font-size: 75px;
+  border-radius: 10px;
+  margin-top: 300px;
+}
+
+
+h1:hover {
+background-color: black;
+}
+
+a h1 {
+color: black;
+}
+
+a {
+text-decoration: none;
+color: white;
+}
+
+button {
+font-size: 30px;
+}
+
+/* Tambahan CSS khusus untuk tabel modal */
+.table-container {
+  max-height: 500px;   /* batas tinggi tabel */
+  overflow-y: auto;    /* bikin scroll ke bawah */
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+#tabelModal {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#tabelModal th, #tabelModal td {
+  padding: 10px;
+  text-align: left;
+}
+
+/* Tombol fixed di atas footer */
+.fixed-btn {
+  position: fixed;
+  bottom: 80px; /* persis di atas footer */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #3B7C8C;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 30px;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.fixed-btn:hover {
+  background-color: #2a5c6a;
+}
+
+h3 {
+font-size: 50px;
+}
+
+
+
+
+footer {
+  background-color: #28384B;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #444;
+  bottom: 0;
+}
+
+footer h3 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-family: arial;
+  
+}
+
+p{
+font-size: 30px;
+font-family: arial;
+}
+
+#email a{
+  color: white;
+  text-decoration: none;
+  margin-left: 150px;
+  margin-right: 95px;
+  font-size: 24px;
+}
+
+#wa a{
+  color: white;
+  text-decoration: none;
+  margin-left: 0px;
+  margin-right: 95px;
+  font-size: 24px;
+}
+
+footer a i {
+  font-size: 24px;
+  
+}
+
+footer p {
+  font-size: 24px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE8W_SyQn3cYpIFhkE4jl4i3ZInQeiRF2HoiY3JnXYUgeXhnnjRIA0XcQ2&s=10');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Wrapper konten agar bisa mendorong footer */
+.wrapper {
+  flex: 1;
+  padding: 5px;
+}
+
+/* Footer tetap di bawah */
+footer {
+  background-color: #28384B;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid #444;
+  margin-top: auto; /* Penting */
+}
+
+</style>
+</head>
+<body>
+  <h2>Input Modal</h2>
+  <form id="modalForm">
+    <label for="tanggal">Tanggal:</label>
+    <input type="date" id="tanggal" required><br>
+    <label for="modal">Jumlah Modal:</label>
+    <input type="number" id="modal" required><br><br>
+    <button type="submit">Simpan</button>
+  </form>
+
+  <h5>Data Modal</h5>
+<div class="table-container">
+  <table border="1" id="tabelModal">
+    <thead>
+      <tr>
+        <th>Tanggal</th>
+        <th>Modal</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<h3>Total Modal: <span id="totalModal">0</span></h3>
+
+
+
+  <script>
+  const API_URL = "https://script.google.com/macros/s/AKfycbw6iFxtJYvYPRtNi7mAcbWreNgXrWXzd9AnohhW6HupdE74dLLoNWK7yA5BldSLIUSL1Q/exec"; // ganti dengan URL Apps Script
+
+  // Submit data
+  document.getElementById("modalForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    let tanggal = document.getElementById("tanggal").value;
+    let modal = document.getElementById("modal").value;
+
+    await fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify({tanggal, modal})
+    });
+
+    loadData(); // refresh tabel setelah input
+  });
+
+  // Fungsi format tanggal yyyy/mm/dd
+  function formatTanggal(dateString) {
+    let d = new Date(dateString);
+    if (isNaN(d)) return dateString; // kalau gagal parsing, tampilkan apa adanya
+
+    let year = d.getFullYear();
+    let month = String(d.getMonth() + 1).padStart(2, "0");
+    let day = String(d.getDate()).padStart(2, "0");
+    return `${year}/${month}/${day}`;
+  }
+
+  // Load data dari spreadsheet
+  async function loadData() {
+    let res = await fetch(API_URL);
+    let data = await res.json();
+
+    let tbody = document.querySelector("#tabelModal tbody");
+    tbody.innerHTML = "";
+
+    let total = 0;
+
+    for (let i = 1; i < data.length; i++) {
+      let row = data[i];
+      let nilaiModal = parseInt(row[1]) || 0;
+
+      let tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${formatTanggal(row[0])}</td>
+        <td>${nilaiModal.toLocaleString("id-ID", { style: "currency", currency: "IDR" })}</td>
+      `;
+      tbody.appendChild(tr);
+
+      total += nilaiModal;
+    }
+
+    document.getElementById("totalModal").textContent = 
+      total.toLocaleString("id-ID", { style: "currency", currency: "IDR" });
+  }
+
+  // Load saat halaman dibuka
+  loadData();
+</script>
+
+
+
+
+
+<h1><a href="http://localhost:9898/Local/Agis/Form/Dimsum%20kai%20Home%20Page.html?A8B900EA-957D-402E-AA4F-3A9FDA3AEFE7">Home</a></h1>
+
+
+<footer>                                                        
+  <h3>CONTACT US :</h3>
+  <div style="display: flex; font-family: 'Arial';  margin-bottom: 24px;">
+    <div id="email"><a href="mailto:agisnursabana@gmail.com" target="blank" ">
+      <i class="fa fa-envelope"></i> agisnursabana@gmail.com
+    </a></div>
+    <div id="wa"><a href="https://wa.me/6285810635520?text=Hello%20Dimsum%20kai%20%F0%9F%98%8A">                                                                                                           <i class="fab fa-whatsapp" ></i> 085810635520
+    </a></div>
+  </div>
+  <p>&copy; 2025 Dimsum Kai</p>
+</footer>
+
+</body>
+</html>
