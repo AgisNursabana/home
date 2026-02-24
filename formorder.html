@@ -233,7 +233,7 @@ footer p {
       method="POST" oninput="updateSummary()">
   
   <input type="text" name="nama" id="nama" placeholder="Nama Pemesan" required />
-  <br>
+
   <!-- Mentai -->
   <div class="menu-item">
     <div class="menu-left">
@@ -263,6 +263,22 @@ footer p {
         <button type="button" onclick="increaseValue('kuah')">+</button>
       </div>
       <div id="warning-kuah" class="warning"></div>
+    </div>
+  </div>
+
+ <!-- ori -->
+  <div class="menu-item">
+    <div class="menu-left">
+      <img src="https://i.imgur.com/jqzsmZ8.jpeg">
+      <div class="menu-title">Dimsum ori isi 5</div>
+    </div>
+    <div class="counter-wrapper">
+      <div class="counter-container">
+        <button type="button" onclick="decreaseValue('ori')">-</button>
+        <input type="number" id="ori" name="kuah" value="0" readonly>
+        <button type="button" onclick="increaseValue('ori')">+</button>
+      </div>
+      <div id="warning-ori" class="warning"></div>
     </div>
   </div>
 
@@ -313,7 +329,8 @@ let stokGoreng = 0;
 const menus = {
   mentai: "Dimsum Mentai isi 5",
   goreng: "Dimsum Goreng isi 4",
-  kuah: "Dimsum Kuah isi 4"
+  kuah: "Dimsum Kuah isi 4",
+  ori: "Dimsum ori isi 5"
 };
 
 function increaseValue(id) {
@@ -336,9 +353,10 @@ function decreaseValue(id) {
 function getSisa(id, jumlahPesan) {
   let mentai = parseInt(document.getElementById("mentai").value);
   let kuah = parseInt(document.getElementById("kuah").value);
+  let ori = parseInt(document.getElementById("ori").value);
   let goreng = parseInt(document.getElementById("goreng").value);
-  if (id === "mentai" || id === "kuah") {
-    let totalMentaiKuah = (id === "mentai" ? jumlahPesan + kuah : mentai + jumlahPesan);
+  if (id === "mentai" || id === "kuah" || id === "ori") {
+    let totalMentaiKuah = (id === "mentai" ? jumlahPesan + kuah + ori : mentai + jumlahPesan + ori);
     return stokMentaiKuah - totalMentaiKuah;
   }
   if (id === "goreng") return stokGoreng - jumlahPesan;
